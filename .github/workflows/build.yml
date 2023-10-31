@@ -26,7 +26,6 @@ jobs:
 
       - name: Create and switch to a new branch
         run: |
-          git checkout -b main
           git config user.email "nlnrao228@gmail.com"
           git config user.name "Nellutla L N Rao"
           git subtree push --prefix dist origin release
