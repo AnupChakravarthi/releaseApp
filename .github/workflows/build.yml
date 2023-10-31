@@ -34,9 +34,9 @@ jobs:
           git push origin release
 
       - name: Push changes to the repository
-        uses: ad-m/github-push-action@v0.6
+        uses: softprops/action-gh-release@v1
         with:
-          branch: release
+          files: dist
 
       - name: Complete workflow
         run: echo "Workflow completed"
