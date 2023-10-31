@@ -29,9 +29,9 @@ jobs:
           git checkout -b release
           git config user.email "nlnrao228@github.com"
           git config user.name "Nellutla L N Rao"
-          git add dist
+          git add .
           git commit -m "Add dist folder"
-          git push origin release
+          git push
 
       - name: Push changes to the repository
         uses: softprops/action-gh-release@v1
