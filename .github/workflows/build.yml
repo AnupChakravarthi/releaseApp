@@ -26,13 +26,13 @@ jobs:
 
       - name: Create and switch to a new branch
         run: |
-          echo "GitHub Token: ${{ secrets.GITHUB_TOKEN }}"
           git checkout -b release
           git config user.email "nlnrao228@github.com"
           git config user.name "Nellutla L N Rao"
           git add .
           git commit -m "Add dist folder"
-          git push --set-upstream origin release
+          git pull origin main
+          git push
 
       - name: Push changes to the repository
         uses: softprops/action-gh-release@v1
