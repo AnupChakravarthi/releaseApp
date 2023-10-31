@@ -31,8 +31,8 @@ jobs:
           git config user.name "Nellutla L N Rao"
           git add .
           git commit -m "Add dist folder"
-          git pull origin main
-          git push --set-upstream origin release
+          git pull --set-upstream origin release
+          git push
 
       - name: Push changes to the repository
         uses: softprops/action-gh-release@v1
