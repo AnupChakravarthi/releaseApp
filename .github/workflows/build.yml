@@ -26,13 +26,10 @@ jobs:
 
       - name: Create and switch to a new branch
         run: |
-          git checkout -b release
           git config user.email "nlnrao228@gmail.com"
           git config user.name "Nellutla L N Rao"
-          git add .
-          git commit -m "Add dist folder"
-          git pull --set-upstream origin release
-          git push
+          git pull origin release
+          git subtree push --prefix dist origin release
 
       - name: Push changes to the repository
         uses: softprops/action-gh-release@v1
