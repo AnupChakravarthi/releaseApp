@@ -27,7 +27,7 @@ jobs:
       - name: Create and switch to a new branch
         run: |
           git checkout -b release
-          git config user.email "nlnrao228@github.com"
+          git config user.email "nlnrao228@gmail.com"
           git config user.name "Nellutla L N Rao"
           git add .
           git commit -m "Add dist folder"
