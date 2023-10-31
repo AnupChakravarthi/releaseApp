@@ -1,0 +1,42 @@
+name: Build and Push Dist Folder
+
+on:
+  push:
+    branches:
+      - main  # Replace with the branch you want to trigger the workflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14  # Replace with your desired Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build App
+        run: npm run build  # Replace with your build command if needed
+
+      - name: Create and switch to a new branch
+        run: |
+          git checkout -b release
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          git add dist
+          git commit -m "Add dist folder"
+          git push origin release
+
+      - name: Push changes to the repository
+        uses: ad-m/github-push-action@v0.6
+        with:
+          branch: release
+
+      - name: Complete workflow
+        run: echo "Workflow completed"
