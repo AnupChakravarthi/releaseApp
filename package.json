@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "build": "webpack --mode production",
-	"deploy": "git subtree push --prefix dist origin release"
+	"deploy": "git subtree push --prefix dist main release"
   }, 
   "author": "",
   "license": "ISC",
