@@ -26,6 +26,9 @@ jobs:
 
       - name: Deploy App
         run: |
+          git fetch origin
+          git checkout release
+          git pull origin release
           npm run deploy  # Replace with your build command if needed
       - name: Complete workflow
         run: echo "Workflow completed"
