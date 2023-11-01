@@ -24,19 +24,7 @@ jobs:
       - name: Build App
         run: npm run build  # Replace with your build command if needed
 
-      - name: Create and switch to a new branch
-        run: |
-          git config user.email "nlnrao228@gmail.com"
-          git config user.name "Nellutla L N Rao"
-          git pull origin release
-          git subtree push --prefix dist origin release
-
-      - name: Push changes to the repository
-        uses: softprops/action-gh-release@v1
-        with:
-          files: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+      - name: Deploy App
+        run: npm run deploy  # Replace with your build command if needed
       - name: Complete workflow
         run: echo "Workflow completed"
