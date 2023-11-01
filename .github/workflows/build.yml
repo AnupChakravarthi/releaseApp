@@ -26,8 +26,6 @@ jobs:
 
       - name: Deploy App
         run: |
-          git config pull.rebase true
-          git pull origin release
           npm run deploy  # Replace with your build command if needed
       - name: Complete workflow
         run: echo "Workflow completed"
