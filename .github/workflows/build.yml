@@ -29,6 +29,8 @@ jobs:
 
       - name: Deploy App
         run: |
+          git checkout -b release origin/release
+          git pull origin release
           npm run deploy  # Replace with your build command if needed
 
       - name: Complete workflow
