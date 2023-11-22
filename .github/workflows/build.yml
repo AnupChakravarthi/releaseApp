@@ -23,7 +23,8 @@ jobs:
           cd app-1
           npm install
           npm run build
-          npm run deploy
+          cd ..
+          ./deploy.sh
       
       - name: Complete workflow
         run: echo "Workflow completed"
