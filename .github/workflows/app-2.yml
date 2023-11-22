@@ -53,8 +53,8 @@ jobs:
 
       - name: Pull changes before pushing using subtree
         run: |
-          git pull origin release/app-2
-          
+          git pull --allow-unrelated-histories origin release/app-2
+
       - name: Push changes using subtree
         run: |
           git subtree push --prefix app-2/dist origin release/app-2
