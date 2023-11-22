@@ -37,7 +37,7 @@ jobs:
 
       - name: Clear previous content in release/app-2
         run: |
-          git pull origin release/app-2
+          git pull --allow-unrelated-histories origin release/app-2
           git rm -r .
           git commit -m "Clear previous content"
           git push origin release/app-2
