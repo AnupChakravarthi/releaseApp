@@ -3,7 +3,7 @@ name: Production Pipeline
 on:
   push:
     branches:
-      - main  # Replace with the branch you want to trigger the workflow
+      - main
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14  # Replace with your desired Node.js version
+          node-version: 14
 
       - name: Set pull strategy to merge
         run: git config pull.rebase false
@@ -27,17 +27,13 @@ jobs:
           git config user.name "Nellutla L N Rao"
 
       - name: Pull changes from the remote branch
-        run: |
-          current_branch=$(git symbolic-ref --short HEAD)
-          if [ "$current_branch" == "release/app-2" ]; then
-            git checkout release/app-2
-          else
-            git checkout -b release/app-2
-          fi
+        run: git pull origin release/app-2
+
+      - name: Switch to release/app-2 branch
+        run: git checkout -B release/app-2
 
       - name: Clear previous content in release/app-2
         run: |
-          git pull --allow-unrelated-histories origin release/app-2
           git rm -r .
           git commit -m "Clear previous content"
           git push origin release/app-2
@@ -45,8 +41,7 @@ jobs:
 
       - name: Build and Deploy to release/app-1
         run: |
-          # Install dependencies and build React app
-          cd app-1
+          cd app-2
           npm install
           npm run build
           cd ..
