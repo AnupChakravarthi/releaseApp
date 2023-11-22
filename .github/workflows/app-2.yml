@@ -35,12 +35,13 @@ jobs:
 
       - name: Pull changes from the remote branch
         run: |
-		      current_branch=$(git branch --show-current)
+          current_branch=$(git symbolic-ref --short HEAD)
           if [ "$current_branch" == "release/app-2" ]; then
             git checkout release/app-2
           else
             git checkout -b release/app-2
           fi
+
       
       - name: Delete changes from the remote branch
         run: |   
