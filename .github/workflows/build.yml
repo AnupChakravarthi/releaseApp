@@ -25,6 +25,10 @@ jobs:
           npm run build
           cd ..
 
+      - name: Pull changes from the remote branch
+        run: |
+          git pull origin release/app-1
+
       - name: Push changes using subtree
         run: |
           git subtree push --prefix app-1/dist origin release/app-1
