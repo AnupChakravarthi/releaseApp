@@ -1,7 +1,0 @@
-runs-on: ubuntu-latest
-steps:
-  - name: Checkout repository
-    uses: actions/checkout@v2
-  - name: Run job 1
-    run: |
-      echo "Job 1"
