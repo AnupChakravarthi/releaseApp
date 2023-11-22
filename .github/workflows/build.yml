@@ -24,6 +24,7 @@ jobs:
           npm install
           npm run build
           cd ..
+          chmod +x deploy.sh
           ./deploy.sh
       
       - name: Complete workflow
