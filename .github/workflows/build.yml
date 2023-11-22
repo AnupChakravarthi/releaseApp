@@ -30,7 +30,7 @@ jobs:
 
       - name: Pull changes from the remote branch
         run: |
-          git pull origin release/app-1
+          git pull origin release/app-1 --allow-unrelated-histories
 
       - name: Push changes using subtree
         run: |
