@@ -22,7 +22,7 @@ jobs:
         run: |
           git config user.email "nellutlalnrao@gmail.com"
           git config user.name "Nellutla L N Rao"
-          
+
       - name: Pull changes from the remote branch
         run: |
           current_branch=$(git symbolic-ref --short HEAD)
@@ -34,6 +34,7 @@ jobs:
 
       - name: Clear previous content in release/app-2
         run: |
+          git pull origin release/app-2
           git rm -r .
           git commit -m "Clear previous content"
           git push origin release/app-2
