@@ -11,22 +11,23 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 14  # Replace with your desired Node.js version
 
-      - name: Install dependencies
+      - name: Install dependencies and build
         run: |
           cd app-1
           npm install
           npm run build
           cd ..
-          chmod +x deploy.sh
-          git pull origin release/app-1
-          ./deploy.sh
-      
+
+      - name: Push changes using subtree
+        run: |
+          git subtree push --prefix app-1/dist origin release/app-1
+
       - name: Complete workflow
         run: echo "Workflow-1 completed"
