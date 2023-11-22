@@ -44,7 +44,6 @@ jobs:
 
       - name: Fetch and merge changes from the remote branch
         run: |
-          git fetch origin release/app-2
           git pull --allow-unrelated-histories origin release/app-2
       
       - name: Delete changes from the remote branch
