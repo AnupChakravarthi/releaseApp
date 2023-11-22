@@ -28,4 +28,4 @@ jobs:
           ./deploy.sh
       
       - name: Complete workflow
-        run: echo "Workflow completed"
+        run: echo "Workflow-1 completed"
