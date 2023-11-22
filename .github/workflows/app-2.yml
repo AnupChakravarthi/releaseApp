@@ -40,10 +40,10 @@ jobs:
       
       - name: Handle Conflicts (if any) and Commit
         run: |
+          git fetch origin release/app-2
           if ! git diff-index --quiet HEAD; then
             git merge --no-edit
           fi
-
 
       - name: Delete changes from the remote branch
         run: |   
