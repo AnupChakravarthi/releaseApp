@@ -33,14 +33,14 @@ jobs:
           git config user.email "nellutlalnrao@gmail.com"
           git config user.name "Nellutla L N Rao"
 
-      - name: Pull changes from the remote branch
+      - name: Check Current Branch
         run: |
-          if git show-ref --verify --quiet refs/heads/release/app-2; then
-            git checkout release/app-2
+          current_branch=$(git branch --show-current)
+          if [ "$current_branch" == "your-branch-name" ]; then
+            echo "Branch exists."
           else
-            git checkout -b release/app-2 origin/release/app-2
+            echo "Branch does not exist."
           fi
-          git pull origin release/app-2
 
       - name: Push changes using subtree
         run: |
