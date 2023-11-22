@@ -26,34 +26,34 @@ jobs:
           git config user.email "nellutlalnrao@gmail.com"
           git config user.name "Nellutla L N Rao"
 
-      - name: Switch to release/app-1 branch
-        run: git checkout -B release/app-1
+      - name: Switch to release/app-2 branch
+        run: git checkout -B release/app-2
 
-      - name: Pull changes from the release/app-1 branch
-        run: git pull --allow-unrelated-histories origin release/app-1
+      - name: Pull changes from the release/app-2 branch
+        run: git pull --allow-unrelated-histories origin release/app-2
 
-      - name: Clear previous content in release/app-1
+      - name: Clear previous content in release/app-2
         run: |
           git rm -r .
           git commit -m "Clear previous content"
-          git push origin release/app-1
+          git push origin release/app-2
           git checkout main
 
       - name: Pull changes from the main branch
         run: git pull --allow-unrelated-histories origin main
 
-      - name: Build and Deploy to release/app-1
+      - name: Build and Deploy to release/app-2
         run: |
-          cd app-1
+          cd app-2
           npm install
           npm run build
           cd ..
 
-      - name: Push to release/app-1 using git subtree
+      - name: Push to release/app-2 using git subtree
         run: |
-          git subtree split --prefix app-1/dist -b app-1-temp
-          git push --force origin app-1-temp:release/app-1
-          git branch -D app-1-temp
+          git subtree split --prefix app-2/dist -b app-2-temp
+          git push --force origin app-2-temp:release/app-2
+          git branch -D app-2-temp
 
 
       - name: Complete workflow
