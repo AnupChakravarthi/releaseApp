@@ -1,2 +1,5 @@
-#!/bin/bash
-git subtree push --prefix app-1/dist origin release/app-1
+# app-1
+cd app-1
+npm install
+npm run build
+cd ..

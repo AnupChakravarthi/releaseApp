@@ -1,49 +1,13 @@
-name: Build and Push Dist Folder
+name: Parallel Jobs Example
 
 on:
   push:
     branches:
-      - main  # Replace with the branch you want to trigger the workflow
+      - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build_job_1:
+    !include build_job_1.yml
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14  # Replace with your desired Node.js version
-
-      - name: Install dependencies and build
-        run: |
-          cd app-1
-          npm install
-          npm run build
-          cd ..
-
-      - name: Set pull strategy to merge
-        run: git config pull.rebase false
-
-      - name: Set Git user identity
-        run: |
-          git config user.email "nellutlalnrao@gmail.com"
-          git config user.name "Nellutla L N Rao"
-
-      - name: Pull changes from the remote branch
-        run: |
-          git checkout -b release/app-1
-      
-      - name: Delete changes from the remote branch
-        run: |   
-          git rm -r --cached .
-
-      - name: Push changes using subtree
-        run: |
-          git subtree push --prefix app-1/dist origin release/app-1
-
-      - name: Complete workflow
-        run: echo "Workflow-1 completed"
+  build_job_2:
+    !include build_job_2.yml
