@@ -50,6 +50,7 @@ jobs:
       - name: Delete changes from the remote branch
         run: |   
           git rm -r --cached .
+          git status
 
       - name: Pull changes before pushing using subtree
         run: |
