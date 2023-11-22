@@ -35,7 +35,6 @@ jobs:
 
       - name: Pull changes from the remote branch
         run: |
-          git fetch origin
           if git show-ref --verify --quiet refs/heads/release/app-2; then
             git checkout release/app-2
           else
