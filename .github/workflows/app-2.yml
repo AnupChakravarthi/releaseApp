@@ -56,4 +56,4 @@ jobs:
           git push origin release/app-2
 
       - name: Complete workflow
-        run: echo "Workflow-1 completed"
+        run: echo "Workflow-2 completed"
