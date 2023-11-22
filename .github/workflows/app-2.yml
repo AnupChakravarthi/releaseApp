@@ -44,10 +44,7 @@ jobs:
       
       - name: Delete changes from the remote branch
         run: |   
-          git status
           git rm -r --cached .
-          git add .
-          git commit -m "Deleted previous changes"
           git push origin release/app-2
 
       - name: Complete workflow
