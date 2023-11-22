@@ -1,4 +1,4 @@
-name: App-1 Production Pipeline
+name: Production Pipeline
 
 on:
   push:
@@ -18,16 +18,21 @@ jobs:
         with:
           node-version: 14  # Replace with your desired Node.js version
 
-      - name: Install dependencies and build
+      - name: App-1 Release
         run: |
           cd app-1
           npm install
           npm run build
           cd ..
-
-      - name: Push changes using subtree
-        run: |
           git subtree push --prefix app-1/dist origin release/app-1
+
+      - name: App-2 Release
+        run: |
+          cd app-2
+          npm install
+          npm run build
+          cd ..
+          git subtree push --prefix app-2/dist origin release/app-2
     
       - name: Complete workflow
         run: echo "Workflow-1 completed"
