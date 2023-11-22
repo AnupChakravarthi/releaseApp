@@ -1,3 +1,8 @@
+name: 34 - Workflow call
+
+on:
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,6 +15,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 14
-          
+
       - name: Test code
         run: echo "Hello world"
