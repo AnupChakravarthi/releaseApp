@@ -27,7 +27,7 @@ jobs:
           git config user.name "Nellutla L N Rao"
 
       - name: Pull changes from the remote branch
-        run: git pull origin release/app-2
+        run: git pull --allow-unrelated-histories origin release/app-2
 
       - name: Switch to release/app-2 branch
         run: git checkout -B release/app-2
