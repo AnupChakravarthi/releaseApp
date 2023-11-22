@@ -40,13 +40,17 @@ jobs:
       
       - name: Handle Conflicts (if any) and Commit
         run: |
-          git checkout -b release/app-2
+          git fetch origin
+          if git show-ref --verify --quiet refs/heads/release/app-2; then
+            git checkout release/app-2
+          else
+            git checkout -b release/app-2 origin/release/app-2
+          fi
           git branch --set-upstream-to=origin/release/app-2
           git fetch
           if ! git diff-index --quiet HEAD; then
             git merge --no-edit
           fi
-
 
       - name: Delete changes from the remote branch
         run: |   
