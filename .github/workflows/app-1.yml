@@ -20,7 +20,7 @@ jobs:
 
       - name: Set pull strategy to merge
         run: git config pull.rebase false
-        
+
       - name: Set Git user identity
         run: |
           git config user.email "nellutlalnrao@gmail.com"
@@ -52,7 +52,7 @@ jobs:
           cd ..
 
       - name: Push to release/app-2 using git subtree
-        run: git subtree push --prefix main/dist origin release/app-2
+        run: git subtree push --prefix main/app-2/dist origin release/app-2
 
       - name: Complete workflow
         run: echo "Workflow completed"
