@@ -1,9 +1,9 @@
-name: app-1 production deployment
+name: App-1 Production Pipeline
 
 on:
   push:
     branches:
-      - sub  # Replace with the branch you want to trigger the workflow
+      - main  # Replace with the branch you want to trigger the workflow
 
 jobs:
   build:
@@ -25,26 +25,9 @@ jobs:
           npm run build
           cd ..
 
-      - name: Set pull strategy to merge
-        run: git config pull.rebase false
-
-      - name: Set Git user identity
-        run: |
-          git config user.email "nellutlalnrao@gmail.com"
-          git config user.name "Nellutla L N Rao"
-
-      - name: Pull changes from the remote branch
-        run: |
-          git checkout -b release/app-1
-          git pull --allow-unrelated-histories origin release/app-1
-      
-      - name: Delete changes from the remote branch
-        run: |   
-          git rm -r --cached .
-
       - name: Push changes using subtree
         run: |
           git subtree push --prefix app-1/dist origin release/app-1
-
+    
       - name: Complete workflow
         run: echo "Workflow-1 completed"

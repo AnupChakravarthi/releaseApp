@@ -1,4 +1,4 @@
-name: Build and Push Dist Folder
+name: App-2 Production Pipeline
 
 on:
   push:
