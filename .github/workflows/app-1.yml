@@ -1,4 +1,4 @@
-name: Build and Push Dist Folder
+name: app-1 production deployment
 
 on:
   push:
