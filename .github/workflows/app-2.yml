@@ -51,15 +51,9 @@ jobs:
         run: |   
           git status
           git rm -r --cached .
+          git add .
+          git commit -m "Deleted previous changes"
           git push origin release/app-2
-
-      - name: Pull changes before pushing using subtree
-        run: |
-          git pull --allow-unrelated-histories origin release/app-2
-
-      - name: Push changes using subtree
-        run: |
-          git subtree push --prefix app-2/dist origin release/app-2
 
       - name: Complete workflow
         run: echo "Workflow-1 completed"
