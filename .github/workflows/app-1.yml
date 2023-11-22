@@ -18,14 +18,6 @@ jobs:
         with:
           node-version: 14  # Replace with your desired Node.js version
 
-      - name: Build and Deploy to release/app-1
-        run: |
-          # Install dependencies and build React app
-          cd app-1
-          npm install
-          npm run build
-          cd ..
-
       - name: Pull changes from the remote branch
         run: |
           current_branch=$(git symbolic-ref --short HEAD)
@@ -35,20 +27,23 @@ jobs:
             git checkout -b release/app-2
           fi
 
-      - name: Copy Contents
+      - name: Clear previous content in release/app-2
         run: |
-          # Copy the contents of the 'dist' folder from main to release/app-1
-          rsync -av --exclude='app-1/dist' main/ release/app-1/
-
-          # Add and commit changes
-          git add .
-          git commit -m "Update release/app-1 with latest build"
-
-          # Push changes to release/app-1
-          git push origin release/app-1
-
-          # Switch back to the main branch
+          git rm -r .
+          git commit -m "Clear previous content"
+          git push origin release/app-2
           git checkout main
+
+      - name: Build and Deploy to release/app-1
+        run: |
+          # Install dependencies and build React app
+          cd app-1
+          npm install
+          npm run build
+          cd ..
+          
+      - name: Push to release/app-2 using git subtree
+        run: git subtree push --prefix main/dist origin release/app-2
 
       - name: Complete workflow
         run: echo "Workflow completed"
