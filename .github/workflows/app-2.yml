@@ -36,6 +36,7 @@ jobs:
       - name: Pull changes from the remote branch
         run: |
           git checkout -b release/app-2
+          git pull origin release/app-2
       
       - name: Delete changes from the remote branch
         run: |   
