@@ -38,10 +38,13 @@ jobs:
           git checkout -b release/app-2
           git pull --allow-unrelated-histories origin release/app-2
       
-      - name: Handle Conflicts (if any)
+      - name: Handle Conflicts (if any) and Commit
         run: |
-          git diff-index --quiet HEAD || git merge --no-edit --continue
-          
+          if ! git diff-index --quiet HEAD; then
+            git merge --no-edit
+          fi
+
+
       - name: Delete changes from the remote branch
         run: |   
           git rm -r --cached .
