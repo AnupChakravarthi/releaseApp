@@ -28,6 +28,11 @@ jobs:
       - name: Set pull strategy to merge
         run: git config pull.rebase false
 
+      - name: Set Git user identity
+        run: |
+          git config user.email "nellutlalnrao@gmail.com"
+          git config user.name "Nellutla L N Rao"
+
       - name: Pull changes from the remote branch
         run: |
           git pull origin release/app-1 --allow-unrelated-histories
