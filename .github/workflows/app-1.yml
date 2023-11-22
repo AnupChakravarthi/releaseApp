@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: 14
 
+      - name: Call another workflow
+        uses: ./.github/workflows/test.yml
+        
       - name: Set pull strategy to merge
         run: git config pull.rebase false
 
