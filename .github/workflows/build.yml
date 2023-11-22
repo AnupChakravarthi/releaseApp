@@ -25,6 +25,7 @@ jobs:
           npm run build
           cd ..
           chmod +x deploy.sh
+          git pull origin main
           ./deploy.sh
       
       - name: Complete workflow
