@@ -36,6 +36,9 @@ jobs:
       - name: Pull changes from the remote branch
         run: |
           git pull origin release/app-1 --allow-unrelated-histories
+      
+      - name: Delete changes from the remote branch
+        run: |   
           git rm -r --cached .
           git push origin release/app-1
 
