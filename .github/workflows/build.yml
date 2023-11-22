@@ -25,6 +25,9 @@ jobs:
           npm run build
           cd ..
 
+      - name: Set pull strategy to merge
+        run: git config pull.rebase false
+
       - name: Pull changes from the remote branch
         run: |
           git pull origin release/app-1
