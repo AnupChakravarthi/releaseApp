@@ -51,7 +51,7 @@ jobs:
         run: |   
           git status
           git rm -r --cached .
-          git status
+          git push origin release/app-2
 
       - name: Pull changes before pushing using subtree
         run: |
