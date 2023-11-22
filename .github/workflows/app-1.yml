@@ -18,6 +18,11 @@ jobs:
         with:
           node-version: 14  # Replace with your desired Node.js version
 
+      - name: Set Git user identity
+        run: |
+          git config user.email "nellutlalnrao@gmail.com"
+          git config user.name "Nellutla L N Rao"
+          
       - name: Pull changes from the remote branch
         run: |
           current_branch=$(git symbolic-ref --short HEAD)
@@ -41,7 +46,7 @@ jobs:
           npm install
           npm run build
           cd ..
-          
+
       - name: Push to release/app-2 using git subtree
         run: git subtree push --prefix main/dist origin release/app-2
 
