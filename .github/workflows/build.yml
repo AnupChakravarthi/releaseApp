@@ -18,20 +18,14 @@ jobs:
         with:
           node-version: 14  # Replace with your desired Node.js version
 
-      - name: Go to app-1
-        run: cd app-1
-
       - name: Install dependencies
-        run: npm install
+        run: cd app-1 && npm install
 
       - name: Build App
         run: npm run build  # Replace with your build command if needed
 
       - name: Deploy App
-        run: |
-          git checkout -b release origin/release
-          git pull origin release
-          npm run deploy  # Replace with your build command if needed
+        run: npm run deploy  # Replace with your build command if needed
 
       - name: Complete workflow
         run: echo "Workflow completed"
