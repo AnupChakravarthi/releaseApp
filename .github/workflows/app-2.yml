@@ -49,6 +49,7 @@ jobs:
       
       - name: Delete changes from the remote branch
         run: |   
+          git status
           git rm -r --cached .
           git status
 
