@@ -45,7 +45,7 @@ jobs:
       
       - name: Delete changes from the remote branch
         run: |   
-          git pull origin release/app-2
+          git pull --allow-unrelated-histories origin release/app-2
           git rm -r --cached .
 
       - name: Push changes using subtree
