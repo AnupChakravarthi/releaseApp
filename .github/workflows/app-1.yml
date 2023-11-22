@@ -26,11 +26,11 @@ jobs:
           git config user.email "nellutlalnrao@gmail.com"
           git config user.name "Nellutla L N Rao"
 
-      - name: Pull changes from the remote branch
-        run: git pull --allow-unrelated-histories origin release/app-2
-
       - name: Switch to release/app-2 branch
         run: git checkout -B release/app-2
+
+      - name: Pull changes from the release/app-2 branch
+        run: git pull --allow-unrelated-histories origin release/app-2
 
       - name: Clear previous content in release/app-2
         run: |
@@ -38,6 +38,9 @@ jobs:
           git commit -m "Clear previous content"
           git push origin release/app-2
           git checkout main
+
+      - name: Pull changes from the main branch
+        run: git pull --allow-unrelated-histories origin main
 
       - name: Build and Deploy to release/app-1
         run: |
@@ -47,7 +50,8 @@ jobs:
           cd ..
 
       - name: Push to release/app-2 using git subtree
-        run: git subtree push --prefix app-2/dist origin release/app-2
+        run: |
+          git subtree push --prefix app-2/dist origin release/app-2
 
       - name: Complete workflow
         run: echo "Workflow completed"
