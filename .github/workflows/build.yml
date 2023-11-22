@@ -23,7 +23,6 @@ jobs:
           cd app-1
           npm install
           npm run build
-          cd ..
           npm run deploy
       
       - name: Complete workflow
