@@ -26,11 +26,19 @@ jobs:
           npm run build
           cd ..
 
-          # Checkout release/app-1 branch
-          git checkout release/app-1
+      - name: Pull changes from the remote branch
+        run: |
+          current_branch=$(git symbolic-ref --short HEAD)
+          if [ "$current_branch" == "release/app-2" ]; then
+            git checkout release/app-2
+          else
+            git checkout -b release/app-2
+          fi
 
+      - name: Copy Contents
+        run: |
           # Copy the contents of the 'dist' folder from main to release/app-1
-          rsync -av --exclude='dist' main/ release/app-1/
+          rsync -av --exclude='app-1/dist' main/ release/app-1/
 
           # Add and commit changes
           git add .
