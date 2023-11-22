@@ -51,7 +51,10 @@ jobs:
 
       - name: Push to release/app-2 using git subtree
         run: |
-          git subtree push --prefix app-2/dist origin release/app-2
+          git subtree split --prefix app-2/dist -b app-2-temp
+          git push --force origin app-2-temp:release/app-2
+          git branch -D app-2-temp
+
 
       - name: Complete workflow
         run: echo "Workflow completed"
