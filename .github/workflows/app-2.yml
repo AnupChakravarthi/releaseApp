@@ -3,7 +3,7 @@ name: App-1 Production Pipeline
 on:
   push:
     branches:
-      - main
+      - main-release
 
 jobs:
   build:
